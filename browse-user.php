@@ -1,4 +1,3 @@
-<?php //hello -trevor ?>
 <?php include 'helper.inc.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
