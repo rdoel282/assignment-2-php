@@ -1,4 +1,4 @@
 
 
 
-document.getElementById("jstest").innerHTML = "hello world.";
+document.getElementById("jstest").innerHTML = "hello world";
