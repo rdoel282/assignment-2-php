@@ -53,6 +53,17 @@
           </div>
         </div>
       </div>
+         <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <a href='browse-user.php' class=''><img src="images/medium/222223.jpg" alt="bob"></a>
+          <div class="caption">
+            <h3>Posts</h3>
+            <p>Browse through our users posts.</p>
+            <p><a href='browse-posts.php' class='list-group-item' >View Posts </a></p>
+          </div>
+        </div>
+      </div>
+    
     
     
     </div>

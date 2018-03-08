@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Chapter 12</title>
+    <title>Browse Posts</title>
 
       <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
@@ -24,14 +24,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-info">
-                    <div class="panel-heading">Users</div> 
+                    <div class="panel-heading">Posts</div> 
                         <div class="panel-body">
                     <?php
-                    $result = sqlResult("select FirstName, LastName, UserID from Users group by LastName");
-                    while ($row = $result->fetch()) {
-                        $name = $row['FirstName'] . " " . $row['LastName'];
-                        generateLink("single-user.php", $row['UserID'], "col-md-3", $name);
-                    }
+                         // list of posts
                     ?>
                         </div>
                     </div>
