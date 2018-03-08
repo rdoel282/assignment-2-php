@@ -1,4 +1,4 @@
-<?php include 'helper.inc.php'; ?>
+<?php include 'includes/helper.inc.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,8 +12,6 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" href="css/bootstrap.min.css" />
-    
-    
     <link rel="stylesheet" href="css/bootstrap-theme.css" />
     <link rel="stylesheet" href="css/captions.css" />
 

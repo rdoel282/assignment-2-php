@@ -1,4 +1,4 @@
-<?php include 'helper.inc.php'; ?>
+<?php include 'includes/helper.inc.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,14 +7,11 @@
     <title>Chapter 12</title>
 
       <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+      <?php include 'includes/css-list.php'; ?>
+  
 
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    
-    
-    <link rel="stylesheet" href="css/bootstrap-theme.css" />
-    <link rel="stylesheet" href="css/captions.css" />
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
 
 </head>
 
@@ -22,7 +19,8 @@
     <?php include 'header.inc.php'; ?>
         <main class="container">
         <div class="panel panel-default">
-          <div class="panel-heading">Filters</div>
+          <div id="jstest" class="panel-heading">Filters</div>
+          <script src="js/image-filter.js"></script>
           <div class="panel-body">
             <form action="browse-images.php" method="get" class="form-horizontal">
               <div class="form-inline">

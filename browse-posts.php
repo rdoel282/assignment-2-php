@@ -1,4 +1,4 @@
-<?php include 'helper.inc.php'; ?>
+<?php include 'includes/helper.inc.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,10 +12,10 @@
 
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     
-    
-    <link rel="stylesheet" href="css/bootstrap-theme.css" />
     <link rel="stylesheet" href="css/captions.css" />
 
+    <link rel="stylesheet" href="css/bootstrap-theme.css" />
+    
 </head>
 
 <body>
@@ -26,9 +26,7 @@
                 <div class="panel panel-info">
                     <div class="panel-heading">Posts</div> 
                         <div class="panel-body">
-                    <?php
-                         // list of posts
-                    ?>
+                              
                         </div>
                     </div>
                 </div>

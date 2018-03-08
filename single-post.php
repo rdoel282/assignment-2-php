@@ -1,3 +1,7 @@
+<!--Currently a copy of single image-->
+
+
+
 <?php include 'includes/helper.inc.php'; 
     // error checking for empty and if its anything but a ecpected ISO string 
     
@@ -22,7 +26,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Chapter 12</title>
+    <title>Singke Post</title>
 
       <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
