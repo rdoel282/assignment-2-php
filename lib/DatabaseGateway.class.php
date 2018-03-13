@@ -1,0 +1,78 @@
+<?php 
+
+
+abstract class DatabaseGateway {
+    
+    // contains connection
+    protected $connection;
+
+    // Constructor is passed a database adapter (example of dependency injection)
+    public function __construct($connect)  {
+          if (is_null($connect) )
+             throw new Exception("Connection is null");
+             
+          $this->connection = $connect;
+       }
+
+    // ABSTRACT METHODS
+   
+    abstract protected function getSelectStatement();
+    
+    abstract protected function getPrimaryKeyName();
+    
+    // select statement for joins 
+    abstract protected function joinSelectStatement();
+    
+    // PUBLIC FINDERS 
+   
+    public function findAll($sortFields=null)
+   { 
+   $sql = $this->getSelectStatement();
+   // add sort order if required
+   if (! is_null($sortFields)) {
+      $sql .= ' ORDER BY ' . $sortFields;
+   }      
+   $statement = DatabaseHelper::runQuery($this->connection, $sql, null);
+   return $statement->fetchAll(); 
+   }   
+   
+   /*
+      Returns all the records in the table sorted by the specified sort order
+   */
+   public function findAllSorted($ascending)
+   { 
+   $sql = $this->getSelectStatement() . ' ORDER BY ' . $this->getOrderFields();
+   if (! $ascending) { 
+      $sql .= " DESC";  
+   }         
+   $statement = DatabaseHelper::runQuery($this->connection, $sql, null);
+   return $statement->fetchAll(); 
+   }  
+   
+   /*
+      Returns a record for the specificed ID
+   */
+   public function findById($id)
+   { 
+   $sql = $this->getSelectStatement() . ' WHERE ' . $this->getPrimaryKeyName() . '=:id';
+   $statement = DatabaseHelper::runQuery($this->connection, $sql, Array(':id' => $id));
+   return $statement->fetch();
+   }   
+   
+   
+    //join with group by select statement 
+    public function joinGroupBy($sortFields=null)
+    { 
+    $sql = $this->getSelectStatement();
+    // add sort order if required
+    if (! is_null($sortFields)) {
+      $sql .= ' ORDER BY ' . $sortFields;
+    }      
+    $statement = DatabaseHelper::runQuery($this->connection, $sql, null);
+    return $statement->fetchAll(); 
+    } 
+   
+
+}
+
+?>
