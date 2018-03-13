@@ -26,11 +26,19 @@
                     <div class="panel-heading">Users</div> 
                         <div class="panel-body">
                     <?php
-                    $result = sqlResult("select FirstName, LastName, UserID from Users group by LastName");
-                    while ($row = $result->fetch()) {
+                    $db = new UserGateway($connection);
+                    $result = $db->findAll('LastName');
+                    foreach ($result as $row) {
                         $name = $row['FirstName'] . " " . $row['LastName'];
                         generateLink("single-user.php", $row['UserID'], "col-md-3", $name);
                     }
+                    
+                    // $result = sqlResult("select FirstName, LastName, UserID from Users group by LastName");
+                    // while ($row = $result->fetch()) {
+                    //     $name = $row['FirstName'] . " " . $row['LastName'];
+                    //     generateLink("single-user.php", $row['UserID'], "col-md-3", $name);
+                    // }
+                      
                     ?>
                         </div>
                     </div>

@@ -18,7 +18,7 @@ require_once('includes/config.php');
     function sqlResult($sql){
     
     try {
-        $pdo = new PDO(DBCONNSTRING,DBUSER,DBPASS);
+        $pdo = new PDO(DBCONNECTION,DBUSER,DBPASS);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $result = $pdo->query($sql);
         $pdo = null;

@@ -3,7 +3,15 @@ define('DBHOST', '');
 define('DBNAME', 'travel');
 define('DBUSER', 'rdoel282');
 define('DBPASS', '');
-define('DBCONNSTRING','mysql:dbname=travel;charset=utf8mb4;');
+define('DBCONNECTION','mysql:dbname=travel;charset=utf8mb4;');
+
+spl_autoload_register(function ($class) {
+ $file = 'lib/' . $class . '.class.php';
+ if (file_exists($file))
+ include $file;
+});
+
+$connection = DatabaseHelper::createConnectionInfo(array(DBCONNECTION,DBUSER, DBPASS));
 
 // Build connection, and pass it to other classes.
 
