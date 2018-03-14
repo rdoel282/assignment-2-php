@@ -40,9 +40,11 @@
     <main class="container">
     <?php
         $id = $_GET['id'];
-        
-        $result = sqlResult("select * from Users join ImageDetails on Users.UserID = ImageDetails.UserID where ImageDetails.UserID = '$id'");
-        $row = $result->fetch();
+        $db = new UserGateway($connection);
+        $result = $db->findById($id);
+        $row = $result;
+        // $result = sqlResult("select * from Users join ImageDetails on Users.UserID = ImageDetails.UserID where ImageDetails.UserID = '$id'");
+        // $row = $result->fetch();
         ?>
         <div class="row">
             <div class="col-md-12">
