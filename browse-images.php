@@ -27,8 +27,12 @@
               <select name="continent" class="form-control">
                 <option value="0">Select Continent</option>
                 <?php /* display list of continents */
-                    $result = sqlResult("select Continents.ContinentCode, ContinentName from Continents join ImageDetails on Continents.ContinentCode = ImageDetails.ContinentCode group by ContinentName");
-                    while ($row = $result->fetch()) {
+                     $db = new ContinentsGateway($connection);
+                        $result = $db->joinGroupBy();
+                        foreach ($result as $row) {
+                        
+                    // $result = sqlResult("select Continents.ContinentCode, ContinentName from Continents join ImageDetails on Continents.ContinentCode = ImageDetails.ContinentCode group by ContinentName");
+                    // while ($row = $result->fetch()) {
                 ?>
                          "<option value=<?php echo $row['ContinentCode'] ?>> <?php echo $row['ContinentName']?></option>
                    <?php } ?>

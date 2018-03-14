@@ -5,11 +5,15 @@
                     <ul class="list-group">
                        
                        <?php   
-                       $result = sqlResult("select ContinentName, ContinentCode from Continents");
-                        while ($row = $result->fetch()) {
-                        // generateLink("browse-images.php", $row['ContinentCode'], "list-group-item", $row['ContinentName']);
-                        echo "<a href='browse-images.php?continent=" . $row['ContinentCode'] . "' class='list-group-item' >" . $row['ContinentName'] . "</a>";
+                        $db = new ContinentsGateway($connection);
+                        $result = $db->joinGroupBy();
+                        foreach ($result as $row) {
+                            echo "<a href='browse-images.php?continent=" . $row['ContinentCode'] . "' class='list-group-item' >" . $row['ContinentName'] . "</a>";
                         }
+                    //   $result = sqlResult("select ContinentName, ContinentCode from Continents");
+                    //     while ($row = $result->fetch()) {
+                    //     echo "<a href='browse-images.php?continent=" . $row['ContinentCode'] . "' class='list-group-item' >" . $row['ContinentName'] . "</a>";
+                    //     }
                        ?>
                        
                     </ul>
