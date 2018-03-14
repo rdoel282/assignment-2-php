@@ -68,8 +68,15 @@
                     <div class="panel-heading">Images from <?php echo $row['CountryName'] ?> </div>
                         <div class="panel-body">
                         <?php
-                        $result = sqlResult("select * from ImageDetails where CountryCodeISO = '$id'");
-                        imgLink($result);
+                        $id = $_GET['id'];
+                        $db = new ImagesGateway($connection);
+                        $result = $db->findById2($id);
+                        foreach ($result as $row) {
+                          $img = "images/square-small/" . $row['Path'];
+                            $imgId = $row['ImageID'];
+                            generateLinkwImg("single-image.php?imgId=$imgId", "col-md-1", "", $img, $row['Description'], "");
+                         }
+                        
                         ?>
                         </div>
                     </div>

@@ -39,13 +39,22 @@ require_once('includes/config.php');
     }
     
     function imgLink($result){
-     while ($row = $result->fetch()) {
+     while ($row = $result) {
         $img = "images/square-small/" . $row['Path'];
         $imgId = $row['ImageID'];
         generateLinkwImg("single-image.php?imgId=$imgId", "col-md-1", "", $img, $row['Description'], "");
 
         }
     }
+    
+    // function imgLink($result){
+    //  while ($row = $result->fetch()) {
+    //     $img = "images/square-small/" . $row['Path'];
+    //     $imgId = $row['ImageID'];
+    //     generateLinkwImg("single-image.php?imgId=$imgId", "col-md-1", "", $img, $row['Description'], "");
+
+    //     }
+    // }
         
     function imgLink2($row){
         $count = count($row);

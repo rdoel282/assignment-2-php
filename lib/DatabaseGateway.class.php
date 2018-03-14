@@ -59,11 +59,21 @@ abstract class DatabaseGateway {
    return $statement->fetch();
    }   
    
+   // function to get just the id sets back
+   public function findById2($id)
+   { 
+   $sql = $this->getSelectStatement() . ' WHERE ' . $this->getPrimaryKeyName() . '=' . '"' . $id . '"';
+   $statement = DatabaseHelper::runQuery($this->connection, $sql, null);
+   return $statement->fetchAll();
+   }   
+   
+   
    
     //join with group by select statement 
     public function joinGroupBy() { 
     $sql = $this->joinSelectStatement();
     $statement = DatabaseHelper::runQuery($this->connection, $sql, null);
+    //return $sql;
     return $statement->fetchAll(); 
     } 
    
