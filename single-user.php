@@ -65,9 +65,17 @@
                 <div class="panel panel-info">
                     <div class="panel-heading">Images by <?php echo $row['FirstName'] . " " .$row['LastName'] ?></div>
                         <div class="panel-body">
-                        <?php        
-                        $result = sqlResult("select * from ImageDetails where UserID = '$id'");
-                        imgLink($result);
+                        <?php  
+                            $id = $_GET['id'];
+                            $db = new ImagesGateway($connection);
+                            $result = $db->findById2($id, "UserID");
+                            foreach ($result as $row) {
+                            $img = "images/square-small/" . $row['Path'];
+                            $imgId = $row['ImageID'];
+                            generateLinkwImg("single-image.php?imgId=$imgId", "col-md-1", "", $img, $row['Description'], "");
+                         }
+                        // $result = sqlResult("select * from ImageDetails where UserID = '$id'");
+                        // imgLink($result);
                         ?>
                         </div>
                     </div>

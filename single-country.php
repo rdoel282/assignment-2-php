@@ -70,7 +70,7 @@
                         <?php
                         $id = $_GET['id'];
                         $db = new ImagesGateway($connection);
-                        $result = $db->findById2($id);
+                        $result = $db->findById2($id, "CountryCodeISO");
                         foreach ($result as $row) {
                           $img = "images/square-small/" . $row['Path'];
                             $imgId = $row['ImageID'];

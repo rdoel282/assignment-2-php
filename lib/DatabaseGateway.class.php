@@ -60,9 +60,9 @@ abstract class DatabaseGateway {
    }   
    
    // function to get just the id sets back
-   public function findById2($id)
+   public function findById2($id, $key)
    { 
-   $sql = $this->getSelectStatement() . ' WHERE ' . $this->getPrimaryKeyName() . '=' . '"' . $id . '"';
+   $sql = $this->getSelectStatement() . ' WHERE ' . $key . '=' . '"' . $id . '"';
    $statement = DatabaseHelper::runQuery($this->connection, $sql, null);
    return $statement->fetchAll();
    }   
