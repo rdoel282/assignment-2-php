@@ -36,8 +36,13 @@
               <select name="country" class="form-control">
                 <option value="0">Select Country</option>
                 <?php /* display list of continents */
-                    $result = sqlResult("select ISO, CountryName from Countries join ImageDetails on ISO = CountryCodeISO group by CountryName");
-                    while ($row = $result->fetch()) {
+                  $db = new CountriesGateway($connection);
+                  $result = $db->joinGroupBy();
+                  foreach ($result as $row) {
+                    // generateLink("single-country.php", $row['ISO'], "list-group-item", $row['CountryName']);
+                  
+                    // $result = sqlResult("select ISO, CountryName from Countries join ImageDetails on ISO = CountryCodeISO group by CountryName");
+                    // while ($row = $result->fetch()) {
                 ?>
                          "<option value=<?php echo $row['ISO'] ?>> <?php echo $row['CountryName']?></option>
                    <?php } ?>

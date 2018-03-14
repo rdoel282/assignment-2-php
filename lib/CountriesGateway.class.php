@@ -8,7 +8,7 @@ class CountriesGateway extends DatabaseGateway {
    
    protected function getSelectStatement()
    {    
-    return "SELECT UserID, FirstName, LastName, Address, City, Region, Country, Postal, Phone, Email FROM Users ";
+    return "select CountryName, Area, Capital, Population, CurrencyName, CountryDescription from Countries ";
    } 
    
     protected function getOrderFields()    {
@@ -16,8 +16,12 @@ class CountriesGateway extends DatabaseGateway {
     } 
 
    protected function getPrimaryKeyName() {
-    return "UserID"; 
+    return "ISO"; 
    }   
+   
+     protected function joinSelectStatement(){
+      return "select ISO, CountryName from Countries join ImageDetails on ISO = CountryCodeISO group by CountryName";
+  }
 
 }
 

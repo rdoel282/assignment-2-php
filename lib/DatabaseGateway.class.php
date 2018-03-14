@@ -61,13 +61,8 @@ abstract class DatabaseGateway {
    
    
     //join with group by select statement 
-    public function joinGroupBy($sortFields=null)
-    { 
-    $sql = $this->getSelectStatement();
-    // add sort order if required
-    if (! is_null($sortFields)) {
-      $sql .= ' ORDER BY ' . $sortFields;
-    }      
+    public function joinGroupBy() { 
+    $sql = $this->joinSelectStatement();
     $statement = DatabaseHelper::runQuery($this->connection, $sql, null);
     return $statement->fetchAll(); 
     } 

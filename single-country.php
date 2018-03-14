@@ -41,8 +41,11 @@
     <main class="container">
     <?php 
     $id = $_GET['id'];
-    $result = sqlResult("select CountryName, Area, Capital, Population, CurrencyName, CountryDescription from Countries where ISO = '$id'");
-    $row = $result->fetch();
+    $db = new CountriesGateway($connection);
+    $result = $db->findById($id);
+    $row = $result;
+    // $result = sqlResult("select CountryName, Area, Capital, Population, CurrencyName, CountryDescription from Countries where ISO = '$id'");
+    // $row = $result->fetch();
     ?>
     <div class="row">
             <div class="col-md-12">

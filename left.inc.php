@@ -21,10 +21,16 @@
                     <ul class="list-group">
                       
                        <?php   
-                       $result = sqlResult("select CountryName,ISO from Countries inner join ImageDetails on Countries.ISO = ImageDetails.CountryCodeISO group by CountryName");
-                        while ($row = $result->fetch()) {
-                        generateLink("single-country.php", $row['ISO'], "list-group-item", $row['CountryName']);
+                        $db = new CountriesGateway($connection);
+                        $result = $db->joinGroupBy();
+                        foreach ($result as $row) {
+                            generateLink("single-country.php", $row['ISO'], "list-group-item", $row['CountryName']);
                         }
+                       
+                    //   $result = sqlResult("select CountryName,ISO from Countries inner join ImageDetails on Countries.ISO = ImageDetails.CountryCodeISO group by CountryName");
+                    //     while ($row = $result->fetch()) {
+                    //     generateLink("single-country.php", $row['ISO'], "list-group-item", $row['CountryName']);
+                    //     }
                        ?>
                         
                     </ul>
