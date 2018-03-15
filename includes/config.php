@@ -1,7 +1,10 @@
 <?php
+$ip = getenv('IP');
+$port = '3306';
+
 define('DBHOST', '');
 define('DBNAME', 'travel');
-define('DBUSER', 'rdoel282');
+define('DBUSER', getenv('C9_USER'));
 define('DBPASS', '');
 define('DBCONNECTION','mysql:dbname=travel;charset=utf8mb4;');
 

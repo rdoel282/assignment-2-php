@@ -19,8 +19,10 @@
     <?php include 'header.inc.php'; ?>
         <main class="container">
         <div class="panel panel-default">
-          <div id="jstest" class="panel-heading">Filters</div>
-          <script src="js/image-filter.js"></script>
+          
+          <div class="panel-heading">Filters</div>
+          
+          
           <div class="panel-body">
             <form action="browse-images.php" method="get" class="form-horizontal">
               <div class="form-inline">
@@ -53,9 +55,14 @@
               </select> 
               <select name="city" class="form-control">
                 <option value="0">Select City</option>
+                
+                
                 <?php /* display list of continents */
-                    $result = sqlResult("select Cities.CityCode, AsciiName from Cities join ImageDetails on Cities.CityCode = ImageDetails.CityCode group by AsciiName");
-                    while ($row = $result->fetch()) {
+                    $db = new CitiesGateway($connection);
+                    $result = $db->joinGroupBy();
+                    foreach ($result as $row) {
+                    // $result = sqlResult("select Cities.CityCode, AsciiName from Cities join ImageDetails on Cities.CityCode = ImageDetails.CityCode group by AsciiName");
+                    // while ($row = $result->fetch()) {
                 ?>
                          "<option value=<?php echo $row['CityCode'] ?>> <?php echo $row['AsciiName']?></option>
                    <?php } ?>
@@ -74,12 +81,17 @@
       <div class="panel-heading">Images <?php echo filterUsed() ?></div>
         <div class="panel-body">
 		      <ul class="caption-style-2">
-			    <?php 
-			    $sqlQuerry = filter();
-                $result = sqlResult($sqlQuerry);
-                while ($row = $result->fetch()) {
+			    <?php
+			    $db = new ImagesGateway($connection);
+			    $result = $db->filter2();
+			    foreach ($result as $row) {
+			   
+			   
+			   // $sqlQuerry = filter();
+      //           $result = sqlResult($sqlQuerry);
+      //           while ($row = $result->fetch()) {
                 ?>
-                <li>
+                <li class='<?php echo " ".$row['CityCode']; echo " ".$row['CountryCodeISO']; echo " ".$row['ContinentCode']; ?>'>
                     <a href=single-image.php?imgId=<?php echo $row['ImageID']; ?> class=img-responsive >
                      <img src=images/square-medium/<?php echo $row['Path']; ?> alt= <?php echo $row['Title']; ?> >
                           <div class="caption">

@@ -1,4 +1,3 @@
 
 
-
-document.getElementById("jstest").innerHTML = "hello world";
+document.getElementsByClassName();

@@ -70,10 +70,10 @@
                             $db = new ImagesGateway($connection);
                             $result = $db->findById2($id, "UserID");
                             foreach ($result as $row) {
-                            $img = "images/square-small/" . $row['Path'];
-                            $imgId = $row['ImageID'];
-                            generateLinkwImg("single-image.php?imgId=$imgId", "col-md-1", "", $img, $row['Description'], "");
-                         }
+                                $img = "images/square-small/" . $row['Path'];
+                                $imgId = $row['ImageID'];
+                                generateLinkwImg("single-image.php?imgId=$imgId", "col-md-1", "", $img, $row['Description'], "");
+                            }
                         // $result = sqlResult("select * from ImageDetails where UserID = '$id'");
                         // imgLink($result);
                         ?>

@@ -66,43 +66,6 @@ require_once('includes/config.php');
         }
     }
     
-    function filter(){
-        //default all images   
-        if( $_GET['continent'] == '0' && $_GET['country'] == '0' && $_GET['city'] == '0'  && empty($_GET['title'])) {
-            $customQuery = "select Path, ImageID, Description, Title from ImageDetails;";
-        }
-        //query string delete defence. 
-        if( empty($_GET['continent']) && empty($_GET['country']) && empty($_GET['city']) && empty($_GET['title'])) {
-                $customQuery = "select Path, ImageID, Description, Title from ImageDetails;";
-        }
-        else {//Build where and statement
-            $customQuery = "select Path, ImageID, Description, Title from ImageDetails WHERE ";
-            $first = true;
-            foreach ($_GET as $key => $value) {
-               if(!empty($_GET[$key]) && $_GET[$key] != '0')    {
-                   if($first == false){ $customQuery .= "AND "; }
-                    switch($key){
-                    case 'continent':
-                    $customQuery .= "ContinentCode = '$value' ";
-                    break;
-                    case 'country':
-                    $customQuery .= "CountryCodeISO = '$value' ";
-                    break;
-                    case 'city':
-                    $customQuery .= "CityCode = '$value' ";
-                    break;
-                    case 'title':
-                     $customQuery .= "Title LIKE '%$value%' "; 
-                    break;
-                    }
-                    $first = false;
-                    }
-                }
-                $customQuery .= ";";
-        }
-        return $customQuery;
-    }
-  
     function filterUsed(){
         $filterString;
                 if(isset($_GET['continent']) && $_GET['continent'] != "0"){
@@ -118,7 +81,7 @@ require_once('includes/config.php');
 			       $filterString .= "[Title = " . $_GET['title'] . "]"; 
 			    }
 			    if(!isset($filterString)){$filterString = "[All]";}
-			    return $filterString;
+			    return "[All]";
     }
     
 ?>
