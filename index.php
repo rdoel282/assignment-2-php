@@ -8,12 +8,7 @@
     <title>Chapter 12</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/bootstrap-theme.css" />
-    <link rel="stylesheet" href="css/captions.css" />
+  <?php include 'includes/css-list.php'; ?>
 
 </head>
 
@@ -53,7 +48,7 @@
       </div>
          <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-          <a href='browse-user.php' class=''><img src="images/medium/222223.jpg" alt="bob"></a>
+          <a href='browse-posts.php' class=''><img src="images/medium/222223.jpg" alt="bob"></a>
           <div class="caption">
             <h3>Posts</h3>
             <p>Browse through our users posts.</p>

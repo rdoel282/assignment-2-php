@@ -10,8 +10,6 @@
       <?php include 'includes/css-list.php'; ?>
   
 
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-
 
 </head>
 
@@ -68,9 +66,9 @@
                    <?php } ?>
               </select> 
               <input type="text"  placeholder="Search title" class="form-control" name=title>
-              <button type="submit" class="btn btn-primary">Filter</button>
+              
               <!--<button href="browse-images.php" type="clear" class="btn btn-default">Clear</button>-->
-              <a href="browse-images.php" class="btn btn-default" role="button">Clear</a>
+              <a href="browse-images.php" class="btn btn-info" role="button">Clear</a>
               </div>
             </form>
 

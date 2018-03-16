@@ -4,15 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Chapter 12</title>
+    <title>About Us</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/bootstrap-theme.css" />
-    <link rel="stylesheet" href="css/captions.css" />
+    
+  <?php include 'includes/css-list.php'; ?>
 
 </head>
 
@@ -22,10 +18,10 @@
     <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-info">
-                    <div class="panel-heading">Creater Information</div>
+                    <h1 class="panel-heading">Creater Information</h1>
                         <div class="panel-body">
-                            <h2>About Me</h2>
-                            <h5>This assignment was created by Ryan Doel, Trevor Brown and . It was created as the second assignment for COMP 3512.</h5>
+                            <h2>About Us</h2>
+                            <h5>This assignment was created by Ryan Doel, Trevor Brown and Nicholas Anderson . It was created as the second assignment for COMP 3512.</h5>
                                 
                     </div>
                 </div>
@@ -34,7 +30,7 @@
         <div class="row">
         <div class="col-md-12">
             <div class="panel panel-info">
-                <div class="panel-heading"><p><b>External Resources Used</b></p></div>
+                <h2 class="panel-heading"><p><b>External Resources Used</b></p></h2>
                     <div class="panel-body">
                         <ul class="list-group">
                             <a href='http://php.net/' class='list-group-item' > Php manual </a>

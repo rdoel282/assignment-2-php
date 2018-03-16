@@ -21,7 +21,7 @@ class PostGateway extends DatabaseGateway {
    
    
   protected function joinSelectStatement(){
-      return null;
+      return "SELECT PostID, MainPostImage, Posts.UserID, Posts.Title, Message, PostTime, Path, FirstName, LastName, ImageDetails.ImageID FROM Posts Join ImageDetails on MainPostImage = ImageID JOIN Users on Posts.UserID = Users.UserID";
   }
 
 }

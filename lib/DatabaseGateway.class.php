@@ -76,7 +76,28 @@ abstract class DatabaseGateway {
     //return $sql;
     return $statement->fetchAll(); 
     } 
+    
+    
+    // find by id with custom join sqls 
+    public function findByIdJoin($id)
+   { 
+   $sql = $this->joinSelectStatement() . ' WHERE ' . $this->getPrimaryKeyName() . '=' . '"' . $id . '"';
+   $statement = DatabaseHelper::runQuery($this->connection, $sql, null);
+   return $statement->fetch();
+   //return $sql;
    
+   }  
+   
+    // find by id with custom join sqls 
+    public function findByIdJoin2($id)
+   { 
+   $sql = $this->joinSelectStatement() . ' WHERE ' . $this->getPrimaryKeyName() . '=' . '"' . $id . '"';
+   $statement = DatabaseHelper::runQuery($this->connection, $sql, null);
+   return $statement->fetchAll();
+   //return $sql;
+   
+
+}
 
 }
 

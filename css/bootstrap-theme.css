@@ -1,19 +1,58 @@
+/**/
+
+body{background-color : #dedede;}
+
+main {
+    
+    position: relative;
+    padding: 35px 48px;
+}
+
+.navbar-default {background-color:#3b3b3b;}
+
+.panel  {box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);}
+.caption-style-2 li {box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);}
+div {}
+
 .topHeaderRow {
-  background-color: #1A237E;
+  background-color: black;
   height: 3em;
-  font-size: 0.8em;
+  font-size: 1.2em;
   padding-top: 1em;
+  font-family : Ubuntu;
+}
+
+
+.topHeaderRow a { 
+  color: #a6a6a6;
+  font-family : Ubuntu;
 }
 .topHeaderRow  a:link { 
-  color: #E8EAF6;
+  color: #a6a6a6;
+  
 }
 .topHeaderRow  a:hover { 
   color: #40C4FF;
+  
 }
 
 .navbar-brand {
-    font-family: lobster, serif;
+    font-family: Lora;
     font-size: 32px;
+    
+    line-height : 1.5em;
+    float : none;
+}
+
+.navbar {
+    position : relative;
+    z-index: 11;
+}
+
+.navbar-header 
+{
+    text-align : center;
+    width : 100%;
 }
 
 .description {
@@ -35,23 +74,26 @@
 
 .caption {
      text-align: center;   
+     
 }
 .thumbnail {
-     border-color: #9FA8DA;   
+     border-color: white; 
+     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+     
 }
 .portfolio-item {
    margin-top: 10px;   
 }
 
 footer {
-   background-color:  #303F9F;  
+   background-color:  #a6a6a6;  
     color: #E8EAF6;
     font-size: 80%;
 }
 footer .final {
-        padding-top: 10px;
-margin-top: 10px;
-    background-color:  #1A237E; 
+padding-top: 10px;
+    margin-top: 10px;
+    background-color: grey ; 
     text-align: center;
 }
 
@@ -62,3 +104,11 @@ footer hr {
 .countryButtons  {
     margin-bottom: 10px;
 }
+
+footer a {
+    color : #E8EAF6;
+    
+}
+
+
+

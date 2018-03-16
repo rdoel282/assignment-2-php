@@ -69,6 +69,7 @@
                             $id = $_GET['id'];
                             $db = new ImagesGateway($connection);
                             $result = $db->findById2($id, "UserID");
+                            echo count($result);
                             foreach ($result as $row) {
                                 $img = "images/square-small/" . $row['Path'];
                                 $imgId = $row['ImageID'];

@@ -26,7 +26,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Singke Post</title>
+    <title>Single Post</title>
 
       <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
@@ -42,22 +42,42 @@
 <body>
     <?php include 'header.inc.php'; ?>
     <main class="container">
-    <?php
-        $id = $_GET['id'];
-        
-        $result = sqlResult("select * from Users join ImageDetails on Users.UserID = ImageDetails.UserID where ImageDetails.UserID = '$id'");
-        $row = $result->fetch();
-        ?>
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-info">
                     <div class="panel-heading">User Information</div>
                         <div class="panel-body">
-                            <h3><?php echo $row['FirstName'] . " " .$row['LastName'] ?></h3>
-                            <p><?php echo $row['Address'] ?></p>
-                            <p><?php echo $row['City'] .", ". $row['Postal'] .", ". $row['Country'] ?></p>
-                            <p><?php echo $row['Phone'] ?></p>
-                            <p><?php echo $row['Email'] ?></p>
+                            <div class="col-md-10">
+                <div class="postlist">
+                    <!--replace each of these rows with a function call -->
+                    <?php
+                    $id = $_GET['id'];
+        
+                    $db = new PostGateway($connection);
+                    $result = $db->findByIdJoin($id);
+                    $row = $result;
+                    ?>
+                    <div class="row">
+                       <!--<div class="col-md-4"> -->
+                       <!--    <a href="single-image.php?imgId=<?php echo $row['ImageID'] ?>" class=""><img src="images/square-medium/<?php echo $row['Path'] ?>" alt="<?php echo $row['Title'] ?>" class="img-responsive"/></a> -->
+                       <!--</div>-->
+                       <div class="col-md-8"> 
+                          <h2><?php echo $row['Title'] ?></h2>
+                          <div class="details">
+                            Posted by <a href="single-user.php?id=<?php echo $row['UserID'] ?>"><?php echo $row['FirstName'] . " " . $row['LastName'] ?></a>
+                            <span class="pull-right"><?php $time = $row['PostTime']; echo substr("$time", 0, -8); ?></span>
+                          </div>
+                          <br>
+                          <div>
+                            <?php echo $row['Message']; ?>
+                       <!--   </div>-->
+                       <!--   <p class="pull-right"><a href="single-post.php?id=<?php echo $row['PostID'] ?>" class="btn btn-primary btn-sm">Read more</a></p>-->
+                       <!--</div>-->
+                   </div>  <!-- /.row -->
+                   <hr/>
+                </div>   <!-- end postlist -->         
+                            
+            </div>
                     </div>
                 </div>
             </div>    
@@ -67,9 +87,15 @@
                 <div class="panel panel-info">
                     <div class="panel-heading">Images by <?php echo $row['FirstName'] . " " .$row['LastName'] ?></div>
                         <div class="panel-body">
-                        <?php        
-                        $result = sqlResult("select * from ImageDetails where UserID = '$id'");
-                        imgLink($result);
+                        <?php     
+                            //$id = $_GET['id'];
+                            $db = new PostimagesGateway($connection);
+                            $result = $db->findByIdJoin2($id);
+                            foreach ($result as $row) {
+                                $img = "images/square-small/" . $row['Path'];
+                                $imgId = $row['ImageID'];
+                                generateLinkwImg("single-image.php?imgId=$imgId", "col-md-1", "", $img, $row['Description'], "");
+                            }
                         ?>
                         </div>
                     </div>
