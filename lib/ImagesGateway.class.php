@@ -24,7 +24,7 @@ class ImagesGateway extends DatabaseGateway {
    }   
    
      protected function joinSelectStatement(){
-      return "select Path, ImageID, Description, Title from ImageDetails where CountryCodeISO = 'BS'";
+      return "select Description, Path, FirstName, LastName, CountryName, ISO, Users.UserID, Title, AsciiName, Cities.CityCode from ImageDetails join Users on Users.UserID = ImageDetails.UserID join Countries on ISO = CountryCodeISO join Cities on Cities.CityCode = ImageDetails.CityCode";
   }
 
  function filter2(){

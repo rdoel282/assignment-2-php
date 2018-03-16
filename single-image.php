@@ -46,8 +46,12 @@
                    
                     <?php  
                         $id = $_GET['imgId'];
-                        $result = sqlResult("select Description, Path, FirstName, LastName, CountryName, ISO, Users.UserID, Title, AsciiName, Cities.CityCode from ImageDetails join Users on Users.UserID = ImageDetails.UserID join Countries on ISO = CountryCodeISO join Cities on Cities.CityCode = ImageDetails.CityCode where ImageID = '$id'");
-                        $row = $result->fetch();
+                        $db = new ImagesGateway($connection);
+                        $result = $db->findByIdJoinSetKeySingle($id, "ImageID");
+                        //echo $result;
+                        $row = $result;
+                        // $result = sqlResult("select Description, Path, FirstName, LastName, CountryName, ISO, Users.UserID, Title, AsciiName, Cities.CityCode from ImageDetails join Users on Users.UserID = ImageDetails.UserID join Countries on ISO = CountryCodeISO join Cities on Cities.CityCode = ImageDetails.CityCode where ImageID = '$id'");
+                        // $row = $result->fetch();
                     ?>
                     
                      <div class="col-md-8">                                                

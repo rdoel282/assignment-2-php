@@ -66,9 +66,8 @@ abstract class DatabaseGateway {
    $statement = DatabaseHelper::runQuery($this->connection, $sql, null);
    return $statement->fetchAll();
    }   
-   
-   
-   
+  
+  
     //join with group by select statement 
     public function joinGroupBy() { 
     $sql = $this->joinSelectStatement();
@@ -82,6 +81,15 @@ abstract class DatabaseGateway {
     public function findByIdJoin($id)
    { 
    $sql = $this->joinSelectStatement() . ' WHERE ' . $this->getPrimaryKeyName() . '=' . '"' . $id . '"';
+   $statement = DatabaseHelper::runQuery($this->connection, $sql, null);
+   return $statement->fetch();
+   //return $sql;
+   
+   }  
+   
+    public function findByIdJoinSetKeySingle($id, $key)
+   { 
+   $sql = $this->joinSelectStatement() . ' WHERE ' . $key . '=' . '"' . $id . '"';
    $statement = DatabaseHelper::runQuery($this->connection, $sql, null);
    return $statement->fetch();
    //return $sql;

@@ -1,13 +1,14 @@
 
 document.getElementsByClassName();
 
-var select = document.getElementById('name');
+var continent = document.getElementsByTagName('continent');
 select.addEventListener('change', changeContinent);
+function changeContinent(evt) {
+    alert("change");
+}
+
+
 select.addEventListener('change', changeCountry);
 select.addEventListener('change', changeCity);
 select.addEventListener('change', changeTitle);
 
-
-function changeContinent(evt) {
-    var name = this.name;
-}

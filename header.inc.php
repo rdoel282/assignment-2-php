@@ -1,9 +1,26 @@
 <header>
-        <div class="topHeaderRow">
-            <div class="container">
-                <div class="text-center">
-                    <ul class="list-inline">
+    <div class="topHeaderRow">
+        <div class="container">
+
+
+            <nav class="navbar navbar-default">
+                <div class="">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="">
                         
+                        <a class="navbar-brand  navbar-left" href="index.php">Share Your Travels</a>
+                    </div>
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-info">Search</button>
+                    </form>
+                </div>
+
+                <div class="text-center ">
+                    <ul class="list-inline">
+
                         <li><a href="aboutus.php"><span class="glyphicon glyphicon-pencil"></span> About </a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout </a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile </a></li>
@@ -19,29 +36,16 @@
                         </li>
                     </ul>
                 </div>
-            </div>
         </div>
-        <!-- end topHeaderRow -->
+    </div>
+    <!-- end topHeaderRow -->
 
 
-        <nav class="navbar navbar-default">
-            <div class="container ">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                   
-                    <a class="navbar-brand" href="index.php">Share Your Travels</a>
-                </div>
-                    <form class="navbar-form navbar-right" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                        </div>
-                        <button type="submit" class="btn btn-info">Search</button>
-                    </form>
-                </div>
-                <!-- /.navbar-collapse -->
+
+    <!-- /.navbar-collapse -->
 
 
-            </div>
-            <!-- /.container-fluid -->
-        </nav>
-    </header>
+    </div>
+    <!-- /.container-fluid -->
+    </nav>
+</header>
