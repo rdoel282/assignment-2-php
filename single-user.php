@@ -46,8 +46,8 @@
         // $result = sqlResult("select * from Users join ImageDetails on Users.UserID = ImageDetails.UserID where ImageDetails.UserID = '$id'");
         // $row = $result->fetch();
         ?>
-        <div class="row">
-            <div class="col-md-12">
+        <div class="row col-md-12">
+            <div class="col-md-9">
                 <div class="panel panel-info">
                     <div class="panel-heading">User Information</div>
                         <div class="panel-body">
@@ -59,9 +59,8 @@
                     </div>
                 </div>
             </div>    
-        </div>        
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-3">
                 <div class="panel panel-info">
                     <div class="panel-heading">Images by <?php echo $row['FirstName'] . " " .$row['LastName'] ?></div>
                         <div class="panel-body">
@@ -69,11 +68,11 @@
                             $id = $_GET['id'];
                             $db = new ImagesGateway($connection);
                             $result = $db->findById2($id, "UserID");
-                            echo count($result);
                             foreach ($result as $row) {
-                                $img = "images/square-small/" . $row['Path'];
-                                $imgId = $row['ImageID'];
-                                generateLinkwImg("single-image.php?imgId=$imgId", "col-md-1", "", $img, $row['Description'], "");
+                                // $img = "images/square-small/" . $row['Path'];
+                                // $imgId = $row['ImageID'];
+                                generateLink("single-image.php", $row['ImageID'], "list-group-item", $row['Title']);
+                                // generateLinkwImg("single-image.php?id=$imgId", "col-md-1", "", $img, $row['Description'], "");
                             }
                         // $result = sqlResult("select * from ImageDetails where UserID = '$id'");
                         // imgLink($result);
@@ -81,7 +80,8 @@
                         </div>
                     </div>
                 </div>
-            </div>    
+            </div>
+        </div>        
         </main>    
 <footer>
         <div class="container-fluid">

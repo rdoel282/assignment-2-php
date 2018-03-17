@@ -8,7 +8,7 @@
 
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <?php include 'includes/css-list.php'; ?>
-  
+      <script type="text/javascript" src="js/image-filter.jsgetElementsById"></script>>
 
 
 </head>
@@ -24,7 +24,7 @@
           <div class="panel-body">
             <form action="browse-images.php" method="get" class="form-horizontal">
               <div class="form-inline">
-              <select name="continent" class="form-control">
+              <select id="continent" name="continent" class="form-control">
                 <option value="0">Select Continent</option>
                 <?php /* display list of continents */
                      $db = new ContinentsGateway($connection);
@@ -90,7 +90,7 @@
       //           while ($row = $result->fetch()) {
                 ?>
                 <li class='<?php echo " ".$row['CityCode']; echo " ".$row['CountryCodeISO']; echo " ".$row['ContinentCode']; ?>'>
-                    <a href=single-image.php?imgId=<?php echo $row['ImageID']; ?> class=img-responsive >
+                    <a href=single-image.php?id=<?php echo $row['ImageID']; ?> class=img-responsive >
                      <img src=images/square-medium/<?php echo $row['Path']; ?> alt= <?php echo $row['Title']; ?> >
                           <div class="caption">
                             <div class="blur"></div>

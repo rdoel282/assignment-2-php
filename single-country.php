@@ -47,8 +47,8 @@
     // $result = sqlResult("select CountryName, Area, Capital, Population, CurrencyName, CountryDescription from Countries where ISO = '$id'");
     // $row = $result->fetch();
     ?>
-    <div class="row">
-            <div class="col-md-12">
+    <div class="row col-md-12">
+            <div class="col-md-9">
                 <div class="panel panel-info">
                     <div class="panel-heading">Country Information</div>
                         <div class="panel-body">
@@ -61,9 +61,8 @@
                     </div>
                 </div>
             </div>    
-        </div>        
-        <div class="row">
-            <div class="col-md-12">
+            <div class="row">
+            <div class="col-md-3">
                 <div class="panel panel-info">
                     <div class="panel-heading">Images from <?php echo $row['CountryName'] ?> </div>
                         <div class="panel-body">
@@ -73,15 +72,16 @@
                         $result = $db->findById2($id, "CountryCodeISO");
                         foreach ($result as $row) {
                           $img = "images/square-small/" . $row['Path'];
-                            $imgId = $row['ImageID'];
-                            generateLinkwImg("single-image.php?imgId=$imgId", "col-md-1", "", $img, $row['Description'], "");
+                            generateLink("single-image.php", $row['ImageID'], "list-group-item", $row['Title']);
+                            //generateLinkwImg("single-image.php?imgId=$imgId", "col-md-1", "", $img, $row['Description'], "");
                          }
                         
                         ?>
                         </div>
                     </div>
                 </div>
-            </div>    
+            </div>
+        </div>        
         </main>    
 
 <footer>

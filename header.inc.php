@@ -1,24 +1,15 @@
 <header>
-    <div class="topHeaderRow">
-        <div class="container">
 
 
-            <nav class="navbar navbar-default">
-                <div class="">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="">
-                        
-                        <a class="navbar-brand  navbar-left" href="index.php">Share Your Travels</a>
-                    </div>
-                    <form class="navbar-form navbar-left" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                        </div>
-                        <button type="submit" class="btn btn-info">Search</button>
-                    </form>
-                </div>
+    <nav class="navbar navbar-default ">
+        <div class="">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="">
 
-                <div class="text-center ">
+
+<div class="topHeaderRow">
+            <div class="container">
+                <div class="text-center">
                     <ul class="list-inline">
 
                         <li><a href="aboutus.php"><span class="glyphicon glyphicon-pencil"></span> About </a></li>
@@ -36,16 +27,32 @@
                         </li>
                     </ul>
                 </div>
+            </div>
         </div>
-    </div>
-    <!-- end topHeaderRow -->
+
+
+                <a class="navbar-brand " href="index.php">Share Your Travels</a>
+                <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-info">Search</button>
+            </form>
+            </div>
+            
+        </div>
+
+        
+        <!-- end topHeaderRow -->
 
 
 
-    <!-- /.navbar-collapse -->
+        <!-- /.navbar-collapse -->
 
 
-    </div>
-    <!-- /.container-fluid -->
+        </div>
+        <!-- /.container-fluid -->
     </nav>
+    </div>
+    </div>
 </header>

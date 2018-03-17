@@ -1,6 +1,6 @@
 <?php include 'includes/helper.inc.php';  
     
-    // error checking for empty and if its anything but a ecpected ISO string 
+    error checking for empty and if its anything but a ecpected ISO string 
     
     if(empty($_GET['imgId'])){
         header("Location: error.php");
@@ -45,13 +45,11 @@
                 <div class="row">
                    
                     <?php  
-                        $id = $_GET['imgId'];
+                        $id = $_GET['id'];
                         $db = new ImagesGateway($connection);
                         $result = $db->findByIdJoinSetKeySingle($id, "ImageID");
                         //echo $result;
                         $row = $result;
-                        // $result = sqlResult("select Description, Path, FirstName, LastName, CountryName, ISO, Users.UserID, Title, AsciiName, Cities.CityCode from ImageDetails join Users on Users.UserID = ImageDetails.UserID join Countries on ISO = CountryCodeISO join Cities on Cities.CityCode = ImageDetails.CityCode where ImageID = '$id'");
-                        // $row = $result->fetch();
                     ?>
                     
                      <div class="col-md-8">                                                

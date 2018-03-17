@@ -9,6 +9,7 @@ main {
     padding: 6em 8em;
 }
 
+
 .navbar-default {
     background-color:#6991ac;
     border-color :#6991ac;
@@ -28,7 +29,7 @@ main {
     background-color: #67727a;
     height: 3em;
     font-size: 1.2em;
-    padding-top: 1em;
+    padding-top: 1em  1em;
     font-family: Playfair+Display;
     
 }
@@ -53,7 +54,7 @@ main {
     font-size: 24px;
     float: left;
     line-height: 1em;
-   
+       height: 0px;
     
 }
 
@@ -169,5 +170,5 @@ footer a {
 
 .form-control
 {
-    width: 50%;
+    width: 100%;
 }

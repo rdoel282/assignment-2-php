@@ -21,7 +21,7 @@
                     <h1 class="panel-heading">Creater Information</h1>
                         <div class="panel-body">
                             <h2>About Us</h2>
-                            <h5>This assignment was created by Ryan Doel, Trevor Brown and Nicholas Anderson . It was created as the second assignment for COMP 3512.</h5>
+                            <h5>This assignment was created by Ryan Doel, Trevor Brown and Nick Anderson . It was created as the second assignment for COMP 3512 at Mount Royal University, taught by Randy Connolly.</h5>
                                 
                     </div>
                 </div>
