@@ -22,7 +22,7 @@
           
           
           <div class="panel-body">
-            <form action="browse-images.php" method="get" class="form-horizontal">
+            <!--<form action="browse-images.php" method="get" class="form-horizontal">-->
               <div class="form-inline">
               <select id="continent" name="continent" class="form-control">
                 <option value="0">Select Continent</option>
@@ -65,12 +65,12 @@
                          "<option value=<?php echo $row['CityCode'] ?>> <?php echo $row['AsciiName']?></option>
                    <?php } ?>
               </select> 
-              <input type="text"  placeholder="Search title" class="form-control" name=title>
+              <input id="search" type="text" placeholder="Search Title" class="form-control" name=title>
               
               <!--<button href="browse-images.php" type="clear" class="btn btn-default">Clear</button>-->
               <a href="browse-images.php" class="btn btn-info" role="button">Clear</a>
               </div>
-            </form>
+            <!--</form>-->
 
           </div>
         </div>     

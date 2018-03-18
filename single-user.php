@@ -25,14 +25,10 @@
     <title>Chapter 12</title>
 
       <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-
+      <?php include 'includes/css-list.php'; ?>  
+        <script type="text/JavaScript" src="js/image-preview.js"></script>
     
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/bootstrap-theme.css" />
-    <link rel="stylesheet" href="css/captions.css" />
-
+  
 </head>
 
 <body>
@@ -63,15 +59,16 @@
             <div class="col-md-3">
                 <div class="panel panel-info">
                     <div class="panel-heading">Images by <?php echo $row['FirstName'] . " " .$row['LastName'] ?></div>
-                        <div class="panel-body">
+                        <div id="imgList" class="panel-body">
                         <?php  
                             $id = $_GET['id'];
                             $db = new ImagesGateway($connection);
                             $result = $db->findById2($id, "UserID");
                             foreach ($result as $row) {
-                                // $img = "images/square-small/" . $row['Path'];
+                                $img = "images/square-small/" . $row['Path'];
                                 // $imgId = $row['ImageID'];
                                 generateLink("single-image.php", $row['ImageID'], "list-group-item", $row['Title']);
+                                echo "<div id='pop' style=' display:none; position:fixed;'><img src='$img'  /></div>";
                                 // generateLinkwImg("single-image.php?id=$imgId", "col-md-1", "", $img, $row['Description'], "");
                             }
                         // $result = sqlResult("select * from ImageDetails where UserID = '$id'");

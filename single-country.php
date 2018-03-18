@@ -26,17 +26,13 @@
     <title>Single Country</title>
 
       <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+      <?php include 'includes/css-list.php'; ?>
    
-
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
+   
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <!--<script type="text/JavaScript" src="js/image-preview.js"></script>-->
     
-    
-    <link rel="stylesheet" href="css/bootstrap-theme.css" />
-    <link rel="stylesheet" href="css/captions.css" />
-
+   
 </head>
 
 <body>
@@ -74,33 +70,37 @@
                                         
                                     
                                     var bounds = new google.maps.LatLngBounds();
-                                    
-                                    
-                                    //var uluru = {lat: 51.1769596, lng: -115.5858991 };
-                                    
-                                    //bounds.extend(uluru);
-                                    var initPoint = {lat: <?php echo $result["Latitude"]?>, lng: <?php echo $result["Longitude"]?> };
+
+                                    var initPoint = {lat: <?php echo $result[0]["Latitude"]?>, lng: <?php echo $result[0]["Longitude"]?> };
+                                    var initPoint2 = {lat: <?php echo $result[1]["Latitude"]?>, lng: <?php echo $result[1]["Longitude"]?> };
                                     var map = new google.maps.Map(document.getElementById('map'), {
-                                        center: initPoint
+                                        center: initPoint,
+                                        zoom: 3,
                                         
                                     });
                                     var marker = new google.maps.Marker({
                                      position: initPoint,
                                      map: map
                                      });
-                                    for( i = 0; i < <?php echo count($result); ?>; i++ ) {
-                                            //var position = new google.maps.LatLng(<?php echo $result[i]['Latitude']?>, <?php echo $result[i]['Longitude']?>);
-                                            var uluru = {lat: <?php echo $result["Latitude"]?>, lng: <?php echo $result["Longitude"]?> };
-                                            bounds.extend(uluru);
-                                            marker = new google.maps.Marker({
-                                                position: uluru,
-                                                map: map,
-                                            });
+                                     var marker = new google.maps.Marker({
+                                     position: initPoint2,
+                                     map: map
+                                     });
+                                     bounds.extend(initPoint);
+                                     bounds.extend(initPoint2);
+                                    //  for( i = 0; i < <?php count($result)?>; i++ ) {
+                                    //     var uluru = {lat: <?php $result["Latitude"]?>, lng: <?php $result["Longitude"]?> };
+                                    //         //bounds.extend(uluru);
+                                    //         marker = new google.maps.Marker({
+                                    //             position: uluru,
+                                    //             map: map,
+                                    //         });
+                                     
                                         
-                                        };
                                     map.fitBounds(bounds);
  
                                   };
+                                  
                                 </script>
                                 <script async defer
                                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp5osxw8q_Yscu2o6OV48ZcBR3yr4-NAM&callback=initMap">
@@ -115,7 +115,7 @@
             <div class="col-md-3">
                 <div class="panel panel-info">
                     <div class="panel-heading">Images from <?php echo $row['CountryName'] ?> </div>
-                        <div class="panel-body">
+                        <div id="imgList" class="panel-body">
                         <?php
                         $id = $_GET['id'];
                         $db = new ImagesGateway($connection);
@@ -123,6 +123,7 @@
                         foreach ($result as $row) {
                           $img = "images/square-small/" . $row['Path'];
                             generateLink("single-image.php", $row['ImageID'], "list-group-item", $row['Title']);
+                            // echo "<div id='pop' style=' display:none; position:fixed;'><img src='$img'  /></div>";
                             //generateLinkwImg("single-image.php?imgId=$imgId", "col-md-1", "", $img, $row['Description'], "");
                          }
                         

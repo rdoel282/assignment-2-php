@@ -179,6 +179,15 @@ footer a {
     background-color: grey;
 }
 
-.hide {
+.hide0 {
+    display : none;
+}
+.hide1 {
+    display : none;
+}
+.hide2 {
+    display : none;
+}
+.hide3 {
     display : none;
 }

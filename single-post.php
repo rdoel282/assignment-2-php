@@ -29,16 +29,12 @@
     <title>Single Post</title>
 
       <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <?php include 'includes/css-list.php'; ?>
     
     <script type="text/JavaScript" src="js/image-preview.js"></script>
 
 
-    
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/bootstrap-theme.css" />
-    <link rel="stylesheet" href="css/captions.css" />
+  
 
 </head>
 
@@ -83,7 +79,7 @@
             <div class="col-md-3">
                 <div class="panel panel-info">
                     <div class="panel-heading">Images for Post <?php echo $row['Title'] ?></div>
-                        <div class="panel-body">
+                        <div id="imgList" class="panel-body">
                         <?php     
                             $db = new PostimagesGateway($connection);
                             $result = $db->findByIdJoin2($id);

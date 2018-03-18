@@ -36,7 +36,7 @@
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Search">
                 </div>
-                <button type="submit" class="btn btn-info">Search</button>
+                <a href="browse-images.php" class="btn btn-info" role="button">Search</a>
             </form>
             </div>
             
