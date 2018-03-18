@@ -56,6 +56,16 @@
           </div>
         </div>
       </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <a href='browse-cities.php' class=''><img src="/images/medium/8710513053.jpg" alt="bob"></a>
+          <div class="caption">
+            <h3>Cities</h3>
+            <p>Browse through our Cities.</p>
+            <p><a href='browse-posts.php' class='list-group-item' >View Cities </a></p>
+          </div>
+        </div>
+      </div>
     
     
     

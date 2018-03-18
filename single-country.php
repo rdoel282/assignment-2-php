@@ -25,12 +25,10 @@
     <meta charset="utf-8">
     <title>Single Country</title>
 
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <?php include 'includes/css-list.php'; ?>
-   
-   
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <!--<script type="text/JavaScript" src="js/image-preview.js"></script>-->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <?php include 'includes/css-list.php'; ?>
+   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/JavaScript" src="js/image-preview.js"></script>
     
    
 </head>
@@ -72,12 +70,14 @@
                                     var bounds = new google.maps.LatLngBounds();
 
                                     var initPoint = {lat: <?php echo $result[0]["Latitude"]?>, lng: <?php echo $result[0]["Longitude"]?> };
-                                    var initPoint2 = {lat: <?php echo $result[1]["Latitude"]?>, lng: <?php echo $result[1]["Longitude"]?> };
+                                    var initPoint2 = {lat: <?php echo $result[8]["Latitude"]?>, lng: <?php echo $result[8]["Longitude"]?> };
                                     var map = new google.maps.Map(document.getElementById('map'), {
                                         center: initPoint,
                                         zoom: 3,
                                         
                                     });
+                                    bounds.extend(initPoint);
+                                    bounds.extend(initPoint2);
                                     var marker = new google.maps.Marker({
                                      position: initPoint,
                                      map: map
@@ -86,16 +86,20 @@
                                      position: initPoint2,
                                      map: map
                                      });
-                                     bounds.extend(initPoint);
-                                     bounds.extend(initPoint2);
-                                    //  for( i = 0; i < <?php count($result)?>; i++ ) {
-                                    //     var uluru = {lat: <?php $result["Latitude"]?>, lng: <?php $result["Longitude"]?> };
-                                    //         //bounds.extend(uluru);
-                                    //         marker = new google.maps.Marker({
-                                    //             position: uluru,
-                                    //             map: map,
-                                    //         });
                                      
+                                     for( i = 0; i < <?php count($result)?>; i++ ) {
+                                        
+                                        var index = i;
+                                        <?php $index = "<script>document.write(index)</script>"?>
+                                        
+                                        <?php echo $index;?>
+                                        var uluru = {lat: <?php $result[$index]["Latitude"]?>, lng: <?php $result[$index]["Longitude"]?> };
+                                            bounds.extend(uluru);
+                                            marker = new google.maps.Marker({
+                                                position: uluru,
+                                                map: map,
+                                            });
+                                    
                                         
                                     map.fitBounds(bounds);
  
@@ -123,7 +127,7 @@
                         foreach ($result as $row) {
                           $img = "images/square-small/" . $row['Path'];
                             generateLink("single-image.php", $row['ImageID'], "list-group-item", $row['Title']);
-                            // echo "<div id='pop' style=' display:none; position:fixed;'><img src='$img'  /></div>";
+                            echo "<div id='pop' style=' display:none; position:fixed;'><img src='$img'  /></div>";
                             //generateLinkwImg("single-image.php?imgId=$imgId", "col-md-1", "", $img, $row['Description'], "");
                          }
                         

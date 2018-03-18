@@ -38,6 +38,8 @@
                             <a href='https://stackoverflow.com/' class='list-group-item' > Stack OverFlow  </a>
                             <a href='https://github.com/rconnolly/comp3512-w2018-assign1' class='list-group-item' > Project on GitHub </a>
                             <a href='https://www.amazon.ca/Fundamentals-Web-Development-Randy-Connolly/dp/0134481267/ref=sr_1_2?s=books&ie=UTF8&qid=1519089691&sr=1-2' class='list-group-item' > Fundamentals of Web Development </a>
+                            <a href='https://www.w3schools.com/' class='list-group-item' > w3schools </a>
+                            <a href='http://www.color-hex.com/color-palette/10896' class='list-group-item' > Color Palette </a>
                         </ul>
                     </div>
                 </div>

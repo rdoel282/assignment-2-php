@@ -168,6 +168,19 @@ footer a {
     border-bottom: 0px solid transparent;
 }
 
+
+
+
+.panel-body {
+    font-size : 1.2em;
+    
+}
+.panel-heading
+{
+    font-size : 1.5em;
+    
+}
+
 .form-control
 {
     width: 100%;
