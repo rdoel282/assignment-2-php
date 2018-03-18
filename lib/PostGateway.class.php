@@ -4,6 +4,8 @@ class PostGateway extends DatabaseGateway {
    
    public function __construct($connect)    {
     parent::__construct($connect);
+    
+    $this->connection = $connect;
    }    
    
    protected function getSelectStatement()

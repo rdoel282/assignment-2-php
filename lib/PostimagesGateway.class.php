@@ -20,7 +20,7 @@ class PostimagesGateway extends DatabaseGateway {
    }   
    
   protected function joinSelectStatement(){
-      return "SELECT PostImages.ImageID, PostID, Path, Description FROM PostImages Join ImageDetails on PostImages.ImageID = ImageDetails.ImageID";
+      return "SELECT PostImages.ImageID, PostID, Path, Description, Title FROM PostImages Join ImageDetails on PostImages.ImageID = ImageDetails.ImageID";
 
     }
 

@@ -12,7 +12,7 @@ class ImagesGateway extends DatabaseGateway {
    
    protected function getSelectStatement()
    {    
-    return "select Path, ImageID, Description, Title from ImageDetails";
+    return "select Path, ImageID, Description, Title, Longitude, Latitude from ImageDetails";
    } 
    
     protected function getOrderFields()    {

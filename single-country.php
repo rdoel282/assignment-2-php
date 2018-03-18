@@ -11,6 +11,7 @@
             break;
         }
     }
+    
     if($_GET['id'] != $ISOID){ 
         header("Location: error.php");
     }
@@ -22,13 +23,15 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Chapter 12</title>
+    <title>Single Country</title>
 
       <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+   
 
     <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     
     
     <link rel="stylesheet" href="css/bootstrap-theme.css" />
@@ -58,7 +61,54 @@
                             <p>Population: <b><?php echo number_format($row['Population']) ?></b></p>
                             <p>Currency Name: <b><?php echo $row['CurrencyName'] ?></b></p>
                             <p><?php echo $row['CountryDescription'] ?></p>
+                            
+                            <div id="map"></div>
+                            
+                                <script>
+                                  function initMap() {
+                                      <?php
+                                        $id = $_GET['id'];
+                                        $db = new ImagesGateway($connection);
+                                        $result = $db->findById2($id, "CountryCodeISO"); 
+                                        ?>
+                                        
+                                    
+                                    var bounds = new google.maps.LatLngBounds();
+                                    
+                                    
+                                    //var uluru = {lat: 51.1769596, lng: -115.5858991 };
+                                    
+                                    //bounds.extend(uluru);
+                                    var initPoint = {lat: <?php echo $result["Latitude"]?>, lng: <?php echo $result["Longitude"]?> };
+                                    var map = new google.maps.Map(document.getElementById('map'), {
+                                        center: initPoint
+                                        
+                                    });
+                                    var marker = new google.maps.Marker({
+                                     position: initPoint,
+                                     map: map
+                                     });
+                                    for( i = 0; i < <?php echo count($result); ?>; i++ ) {
+                                            //var position = new google.maps.LatLng(<?php echo $result[i]['Latitude']?>, <?php echo $result[i]['Longitude']?>);
+                                            var uluru = {lat: <?php echo $result["Latitude"]?>, lng: <?php echo $result["Longitude"]?> };
+                                            bounds.extend(uluru);
+                                            marker = new google.maps.Marker({
+                                                position: uluru,
+                                                map: map,
+                                            });
+                                        
+                                        };
+                                    map.fitBounds(bounds);
+ 
+                                  };
+                                </script>
+                                <script async defer
+                                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp5osxw8q_Yscu2o6OV48ZcBR3yr4-NAM&callback=initMap">
+                                </script>
+                        
                     </div>
+                    
+                    
                 </div>
             </div>    
             <div class="row">

@@ -1,19 +1,19 @@
 <?php include 'includes/helper.inc.php';  
     
-    error checking for empty and if its anything but a ecpected ISO string 
+    // error checking for empty and if its anything but a ecpected ISO string 
     
-    if(empty($_GET['imgId'])){
+    if(empty($_GET['id'])){
         header("Location: error.php");
     }
     
     $result = sqlResult("select ImageID from ImageDetails");
     while ($row = $result->fetch()) {
         $ISOID = $row['ImageID'];
-        if($_GET['imgId'] == $ISOID){
+        if($_GET['id'] == $ISOID){
             break;
         }
     }
-    if($_GET['imgId'] != $ISOID){ 
+    if($_GET['id'] != $ISOID){ 
         header("Location: error.php");
     }
     

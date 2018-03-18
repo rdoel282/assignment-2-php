@@ -31,7 +31,7 @@ require_once('includes/config.php');
     }
     
     function generateLink($url, $id, $class, $label) {
-    echo "<a href='$url?id=$id' class='$class' > $label </a>";
+    echo "<a id='listImg' href='$url?id=$id' class='$class' > $label </a>";
     }
     
     function generateLinkwImg($url, $class, $label, $img, $alt, $imgClass) {

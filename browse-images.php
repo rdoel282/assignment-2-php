@@ -8,7 +8,7 @@
 
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <?php include 'includes/css-list.php'; ?>
-      <script type="text/javascript" src="js/image-filter.jsgetElementsById"></script>>
+     
 
 
 </head>
@@ -37,7 +37,7 @@
                          "<option value=<?php echo $row['ContinentCode'] ?>> <?php echo $row['ContinentName']?></option>
                    <?php } ?>
               </select>     
-              <select name="country" class="form-control">
+              <select id="country" name="country" class="form-control">
                 <option value="0">Select Country</option>
                 <?php /* display list of continents */
                   $db = new CountriesGateway($connection);
@@ -51,7 +51,7 @@
                          "<option value=<?php echo $row['ISO'] ?>> <?php echo $row['CountryName']?></option>
                    <?php } ?>
               </select> 
-              <select name="city" class="form-control">
+              <select id="city" name="city" class="form-control">
                 <option value="0">Select City</option>
                 
                 
@@ -89,7 +89,7 @@
       //           $result = sqlResult($sqlQuerry);
       //           while ($row = $result->fetch()) {
                 ?>
-                <li class='<?php echo " ".$row['CityCode']; echo " ".$row['CountryCodeISO']; echo " ".$row['ContinentCode']; ?>'>
+                <li class='<?php echo $row['ContinentCode']; echo " ".$row['CountryCodeISO']; echo " ".$row['CityCode']; ?>'>
                     <a href=single-image.php?id=<?php echo $row['ImageID']; ?> class=img-responsive >
                      <img src=images/square-medium/<?php echo $row['Path']; ?> alt= <?php echo $row['Title']; ?> >
                           <div class="caption">
@@ -122,5 +122,5 @@
         <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
-
+ <script type="text/javascript" src="js/image-filter.js"></script>>
 </html>
