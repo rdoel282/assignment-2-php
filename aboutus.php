@@ -21,7 +21,12 @@
                     <h1 class="panel-heading">Creater Information</h1>
                         <div class="panel-body">
                             <h2>About Us</h2>
-                            <h5>This assignment was created by Ryan Doel, Trevor Brown and Nick Anderson . It was created as the second assignment for COMP 3512 at Mount Royal University, taught by Randy Connolly.</h5>
+                            <p>This assignment was created by Ryan Doel , Trevor Brown and Nick Anderson . It was created as the second assignment for COMP 3512 at Mount Royal University, taught by Randy Connolly.<br><br>
+                            
+                            Ryan Doel, Class Architecture and Pages.<br>
+                            Trevor Brown, Theme, JavaScript and Login/Logout.<br>
+                            Nick Anderson, Google maps, Javascript, Favorites.<br>
+                            </p>
                                 
                     </div>
                 </div>
@@ -40,6 +45,8 @@
                             <a href='https://www.amazon.ca/Fundamentals-Web-Development-Randy-Connolly/dp/0134481267/ref=sr_1_2?s=books&ie=UTF8&qid=1519089691&sr=1-2' class='list-group-item' > Fundamentals of Web Development </a>
                             <a href='https://www.w3schools.com/' class='list-group-item' > w3schools </a>
                             <a href='http://www.color-hex.com/color-palette/10896' class='list-group-item' > Color Palette </a>
+                            <a href='http://developers.google.com/maps/documentation/static-maps/intro' class='list-group-item' > Google Static Maps API </a>
+                            <a href='https://davidwalsh.name/query-string-javascript' class='list-group-item' > JavaScript Query String Solution </a>
                         </ul>
                     </div>
                 </div>

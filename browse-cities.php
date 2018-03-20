@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Chapter 12</title>
+    <title>Browse Cities</title>
 
       <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php include 'includes/css-list.php'; ?>
@@ -23,7 +23,7 @@
                         $db = new CitiesGateway($connection);
                         $result = $db->joinGroupBy();
                         foreach ($result as $row) {
-                            generateLink("single-country.php", $row['CityCode'], "col-md-3", $row['AsciiName']);
+                            generateLink("single-city.php", $row['CityCode'], "col-md-3", $row['AsciiName']);
                         }
                         // $result = sqlResult("select CountryName,ISO from Countries inner join ImageDetails on Countries.ISO = ImageDetails.CountryCodeISO group by CountryName");
                         // while ($row = $result->fetch()) {

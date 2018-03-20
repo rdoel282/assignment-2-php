@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Chapter 12</title>
+    <title>Browse Countries</title>
 
       <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php include 'includes/css-list.php'; ?>

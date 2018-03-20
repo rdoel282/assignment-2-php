@@ -1,19 +1,10 @@
 <?php include 'includes/helper.inc.php'; 
     // error checking for empty and if its anything but a ecpected ISO string 
-    
-    if(empty($_GET['id'])){
-        header("Location: error.php");
-    }
-    $result = sqlResult("select UserID from Users group by LastName");
-    while ($row = $result->fetch()) {
-        $ISOID = $row['UserID'];
-        if($_GET['id'] == $ISOID){
-            break;
-        }
-    }
-    if($_GET['id'] != $ISOID){ 
-        header("Location: error.php");
-    }
+   session_start(); 
+   if(!isset($_SESSION['id'])){
+        header("Location: login.php");}
+        
+ 
     
 ?>
 
@@ -22,10 +13,10 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Users</title>
+    <title>User Profile</title>
 
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <?php include 'includes/css-list.php'; ?>  
+    <?php include 'includes/css-list.php'; ?>  
         <script type="text/JavaScript" src="js/image-preview.js"></script>
     
   
@@ -35,7 +26,7 @@
     <?php include 'header.inc.php'; ?>
     <main class="container">
     <?php
-        $id = $_GET['id'];
+        $id = $_SESSION['id'];
         $db = new UserGateway($connection);
         $result = $db->findById($id);
         $row = $result;
@@ -45,7 +36,7 @@
         <div class="row col-md-12">
             <div class="col-md-9">
                 <div class="panel panel-info">
-                    <div class="panel-heading">User Information</div>
+                    <div class="panel-heading">User Profile</div>
                         <div class="panel-body">
                             <h3><?php echo $row['FirstName'] . " " .$row['LastName'] ?></h3>
                             <p><?php echo $row['Address'] ?></p>
@@ -61,18 +52,17 @@
                     <div class="panel-heading">Images by <?php echo $row['FirstName'] . " " .$row['LastName'] ?></div>
                         <div id="image-list" class="panel-body">
                         <?php  
-                            $id = $_GET['id'];
+                            $id = $_SESSION['id'];
                             $db = new ImagesGateway($connection);
                             $result = $db->findById2($id, "UserID");
                             foreach ($result as $row) {
-                                $id = $row['ImageID'];
-                                $img = "images/square-medium/" . $row['Path'];
+                             $id = $row['ImageID'];
+                                 $img = "images/square-medium/" . $row['Path'];
                                 $img2 = "images/square-small/" . $row['Path'];
                                 
                                 generateLinkwImg("single-image.php?id=$id", "", "", $img2, $row['Title'], "image-item img-responsive img-responsive-list");
                                 //along with the title of the image 
                                 echo "<div style=' display:none; position:fixed;' class='panel panel-info'><div class='panel-heading'>".$row['Title']."</div><div class='panel-item''><img src='$img'  /></div></div>";
-                              
                             }
                         
                         ?>

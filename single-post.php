@@ -4,6 +4,10 @@
 
 <?php include 'includes/helper.inc.php'; 
     // error checking for empty and if its anything but a ecpected ISO string 
+    session_start();
+    if(!isset($_SESSIONfav['favorites'])){ 
+    $_SESSIONfav['favorites'] = array(); 
+    }
     
     if(empty($_GET['id'])){
         header("Location: error.php");
@@ -65,6 +69,27 @@
                                           <br>
                                           <div>
                                             <?php echo $row['Message']; ?>
+                                            
+                                            <button type="button" id="fav" class="btn btn-default" >Working</button>
+                                <div id='favAlert' class="alert alert-success collapse">
+                                <strong>Success!</strong> This item has been added to your favorites!
+                                </div>
+                                <br><br><br>
+                                <script>
+                                    $(document).ready(function () {
+                                        $('#fav').click(function () {
+                                            $('#favAlert').show('fade');
+                                            setTimeout(function() {
+                                                $('#favAlert').hide('fade');
+                                            }, 2000);
+                                        });
+                                    });
+                                    $_SESSION['favorites'][] = $row['PostID'];
+                                    array_push($_SESSIONfav['favorites'], "hello");
+                                    
+                                    
+                                </script>
+                                         <?php echo print_r($_SESSIONfav['favorites']); ?>   
                                           </div>  <!-- /.row -->
                                            <hr/>
                                     </div>   <!-- end postlist -->         
@@ -84,13 +109,49 @@
                             $db = new PostimagesGateway($connection);
                             $result = $db->findByIdJoin2($id);
                             foreach ($result as $row) {
-                                $img = "images/square-small/" . $row['Path'];
-                                generateLink("single-image.php", $row['ImageID'], "list-group-item", $row['Title']);
-                                echo "<div id='pop' style=' display:none; position:fixed;'><img src='$img'  /></div>";
+                                $id = $row['ImageID'];
+                                  $img = "images/square-medium/" . $row['Path'];
+                                $img2 = "images/square-small/" . $row['Path'];
+                                
+                                generateLinkwImg("single-image.php?id=$id", "", "", $img2, $row['Title'], "image-item img-responsive img-responsive-list");
+                                //along with the title of the image 
+                                echo "<div style=' display:none; position:fixed;' class='panel panel-info'><div class='panel-heading'>".$row['Title']."</div><div class='panel-item''><img src='$img'  /></div></div>";
                             }
                         ?>
                         </div>
                     </div>
+                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                            <div class="btn-group" role="group">
+                                
+                                
+                                <button type="button" id="fav" class="btn btn-default" ><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></button>
+                                <div id='favAlert' class="alert alert-success collapse">
+                                <strong>Success!</strong> This item has been added to your favorites!
+                                </div>
+                                <script>
+                                    $(document).ready(function () {
+                                        $('#fav').click(function () {
+                                            $('#favAlert').show();
+                                            setTimeout(function() {
+                                                $('#favAlert').hide('fade');
+                                            }, 2000);
+                                        });
+                                    });
+                                </script>
+                               
+                                
+                                
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-save" aria-hidden="true"></span></button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-print" aria-hidden="true"></span></button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button>
+                            </div>
+                        </div>
                 </div>
             </div>
             </div>

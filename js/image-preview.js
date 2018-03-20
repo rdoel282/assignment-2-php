@@ -1,39 +1,27 @@
-//alert("hello");
+
 window.onload = function() {
-document.getElementById("listImg").onmouseover = function(event){
-        var x = event.clientX;  
-        var y = event.clientY; 
+
+var links = document.getElementsByClassName("image-item");
+
+        for(var i = 0; links.length > i; i++) {
+                
+        links[i].addEventListener("mouseover", function(e) {
+            var x = event.clientX;  
+            var y = event.clientY;
+           
+            var element = e.target.parentElement.nextSibling;
+            element.style.top = y-300 + "px";
+            element.style.left = x-70 + "px";
+            element.style.display = "block";
+            
+        });
         
-        var pop = document.getElementById("pop");
-        pop.style.top = y-75 + "px";
-        pop.style.left = x-35 + "px";
-        pop.style.display = "block";
+         links[i].addEventListener("mouseleave", function(e) {
+            var element = e.target.parentElement.nextSibling;
+            element.style.display = "none";
+            
+        });
 
-    };
-
-    // document.getElementById("imgList").onmouseover = function(event){
-    //         alert("testing");
-    //     var x = event.clientX;  
-    //     var y = event.clientY; 
-        
-    //     var pop = document.getElementById("pop");
-    //     pop.style.top = y-75 + "px";
-    //     pop.style.left = x-35 + "px";
-    //     pop.style.display = "block";
-
-    // };
-    
-    // document.getElementsByClassName("list-group-item").onmouseover = function(){
-    //     alert("testing");
-    // };
-     
-
-
-document.getElementById("listImg").onmouseout = function(){
-        document.getElementById("pop").style.display = "none";
-    };  
-    
-    
-
-
+    }
 };
+

@@ -8,7 +8,7 @@ class CitiesGateway extends DatabaseGateway {
    
    protected function getSelectStatement()
    {    
-    return "SELECT CityCode, AsciiName, CountryCodeISO, Population, TimeZone  FROM Cities ";
+    return "SELECT CityCode, AsciiName, CountryCodeISO, Population, TimeZone, Elevation, Latitude, Longitude FROM Cities ";
    } 
    
     protected function getOrderFields()    {

@@ -1,20 +1,17 @@
 <?php include 'includes/helper.inc.php'; 
     // error checking for empty and if its anything but a ecpected ISO string 
-    
-    if(empty($_GET['id'])){
-        header("Location: error.php");
+     session_start();
+     if(!isset($_SESSION['id'])){
+ header("Location: login.php");
     }
     $result = sqlResult("select UserID from Users group by LastName");
     while ($row = $result->fetch()) {
         $ISOID = $row['UserID'];
-        if($_GET['id'] == $ISOID){
+        if($_SESSION['userName'] == $ISOID){
             break;
         }
     }
-    if($_GET['id'] != $ISOID){ 
-        header("Location: error.php");
-    }
-    
+
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +19,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Users</title>
+    <title>Favorites</title>
 
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <?php include 'includes/css-list.php'; ?>  
@@ -35,7 +32,7 @@
     <?php include 'header.inc.php'; ?>
     <main class="container">
     <?php
-        $id = $_GET['id'];
+        $id = $_SESSION['id'];
         $db = new UserGateway($connection);
         $result = $db->findById($id);
         $row = $result;
@@ -45,10 +42,10 @@
         <div class="row col-md-12">
             <div class="col-md-9">
                 <div class="panel panel-info">
-                    <div class="panel-heading">User Information</div>
+                    <div class="panel-heading">My Favorite Posts</div>
                         <div class="panel-body">
                             <h3><?php echo $row['FirstName'] . " " .$row['LastName'] ?></h3>
-                            <p><?php echo $row['Address'] ?></p>
+                            <p><?php echo $_SESSION[0]['favorites'] ?></p>
                             <p><?php echo $row['City'] .", ". $row['Postal'] .", ". $row['Country'] ?></p>
                             <p><?php echo $row['Phone'] ?></p>
                             <p><?php echo $row['Email'] ?></p>
@@ -58,7 +55,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="panel panel-info">
-                    <div class="panel-heading">Images by <?php echo $row['FirstName'] . " " .$row['LastName'] ?></div>
+                    <div class="panel-heading">My Favorite Images></div>
                         <div id="image-list" class="panel-body">
                         <?php  
                             $id = $_GET['id'];
@@ -71,7 +68,7 @@
                                 
                                 generateLinkwImg("single-image.php?id=$id", "", "", $img2, $row['Title'], "image-item img-responsive img-responsive-list");
                                 //along with the title of the image 
-                                echo "<div style=' display:none; position:fixed;' class='panel panel-info'><div class='panel-heading'>".$row['Title']."</div><div class='panel-item''><img src='$img'  /></div></div>";
+                                echo "<div id='pop' style=' display:none; position:fixed;'><img src='$img'  />".$row['Title']."</div>";
                               
                             }
                         

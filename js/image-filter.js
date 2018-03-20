@@ -1,5 +1,8 @@
 /*selectors*/
 
+
+
+
 var continent = document.getElementById("continent");
 var city = document.getElementById("city");
 var country = document.getElementById("country");
@@ -10,6 +13,9 @@ var imageParent = document.getElementsByClassName("caption-style-2")[0];
 
 /*array of strings and number that reprsents the current filters.*/
 var currentFilter = [0,0,0,0];
+
+
+checkQueryString();
 
 
 continent.addEventListener("change", function() {
@@ -87,18 +93,34 @@ function titleSearch(search, classNum) {
 
 
 function checkQueryString() {
-    var queryString = ["continent", "country", "city"];
-    var url = window.location.href;
-
-    for (var i; queryString.length > i; i++) {
-        if (url.indexOf('?' + queryString[i] + '=') != -1) {
-            url.substring()
-            //applyFilter(,i);
+    
+    var keyArray = ["continent","country","city","title","search"];
+    var queryValue;
+    var queryString = window.location.search
+    for (var i=0; keyArray.length > i; i++) {
+        
+        if (queryString.indexOf('?' + keyArray[i] + '=') != -1) {
+            queryValue = getUrlParameter(keyArray[i]);
+            
+            checkFilter(queryValue,i);
+            
+            
         }
-        else if (url.indexOf('&' + queryString[i] + '=') != -1) {
-            //applyFilter(,i);
+        else if (queryString.indexOf('&' + keyArray[i] + '=') != -1) {
+            queryValue = getUrlParameter(keyArray[i]);
+            
+            currentFilter[i] = queryValue;
+            checkFilter(queryValue,i);
         }
     }
+    
+/*https://davidwalsh.name/query-string-javascript*/
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(window.location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
 
 
 }

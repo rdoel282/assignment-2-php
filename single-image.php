@@ -23,7 +23,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Chapter 12</title>
+    <title>Images</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
    <?php include 'includes/css-list.php'; ?>
@@ -48,12 +48,16 @@
                     
                      <div class="col-md-8">                                                
                         <img class="img-responsive" src="images/medium/<?php echo $row['Path']; ?>" alt="View of Cologne">
+                        <div class=''>
                         <p class="description"><?php echo $row['Description']; ?></p>
+                              <?php $span = $db->imageRating($_GET['id']);
+                            echo $span;?>
+                            </div>
                     </div> 
 
-                     <div class="col-md-4">                                                
-                        <h2><?php echo $row['Title']; ?></h2>
-                        <div class="panel panel-default">
+                     <div class="col-md-4 ">                                                
+                        <h2 class = ''><?php echo $row['Title']; ?></h2>
+                        <div class=" panel-default">
                             <div class="panel-body">
                                 <ul class="details-list">
                                     <li>By: <a href="single-user.php?id=<?php echo $row['UserID'] ?>"><?php echo $row['FirstName'] . " " . $row['LastName']; ?></a></li>
@@ -83,7 +87,8 @@
                 
                 
             <!-- Related Projects Row -->
-
+            
+          
             <!-- /.row -->
                             
 

@@ -36,7 +36,7 @@
                           <div>
                             <?php $excr=$row['Message']; echo $row['Message']; ?>
                           </div>
-                          <p class="pull-right"><a href="single-post.php?id=<?php echo $row['PostID'] ?>" class="btn btn-primary btn-sm">Read more</a></p>
+                          <p class="pull-right"><a href="single-post.php?id=<?php echo $row['PostID'] ?>" class="btn btn-info btn-sm">Read more</a></p>
                        </div>
                    </div>  <!-- /.row -->
                    <hr/>

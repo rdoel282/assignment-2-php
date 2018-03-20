@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Chapter 12</title>
+    <title>Welcome</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
   <?php include 'includes/css-list.php'; ?>
@@ -13,6 +13,7 @@
 </head>
 
 <body>
+
     <?php include 'header.inc.php'; ?>
     <main class="container">
     <div class="row">

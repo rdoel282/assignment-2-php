@@ -31,18 +31,22 @@ require_once('includes/config.php');
     }
     
     function generateLink($url, $id, $class, $label) {
-    echo "<a id='listImg' href='$url?id=$id' class='$class' > $label </a>";
+    echo "<a  class='$class' href='$url?id=$id' class='$class' > $label </a>";
     }
     
     function generateLinkwImg($url, $class, $label, $img, $alt, $imgClass) {
     echo "<a href='$url' class='$class' ><img src='$img' alt='$alt' class='$imgClass' /> $label </a>";
     }
     
+    function generateLinkwImg2($url, $img, $alt, $imgClass) {
+    echo "<img href='$url' src='$img' alt='$alt' class='$imgClass' />";
+    }
+    
     function imgLink($result){
      while ($row = $result) {
-        $img = "images/square-small/" . $row['Path'];
+        $img = "images/square-medium/" . $row['Path'];
         $imgId = $row['ImageID'];
-        generateLinkwImg("single-image.php?imgId=$imgId", "col-md-1", "", $img, $row['Description'], "");
+        generateLinkwImg("single-image.php?imgId=$imgId", "list-group-item", "", $img, $row['Description'], "");
 
         }
     }

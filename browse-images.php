@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Chapter 12</title>
+    <title>Browse Images</title>
 
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <?php include 'includes/css-list.php'; ?>
@@ -81,7 +81,13 @@
 		      <ul class="caption-style-2">
 			    <?php
 			    $db = new ImagesGateway($connection);
+			    if(isset($_GET['search']) && !empty($_GET['search'])) {
+			    $result = $db->filterSearchBar($_GET['search']);
+			    }
+			    else {
 			    $result = $db->filter2();
+			    }
+			    
 			    foreach ($result as $row) {
 			   
 			   
@@ -90,7 +96,7 @@
       //           while ($row = $result->fetch()) {
                 ?>
                 <li class='<?php echo $row['ContinentCode']; echo " ".$row['CountryCodeISO']; echo " ".$row['CityCode']; ?>'>
-                    <a href=single-image.php?id=<?php echo $row['ImageID']; ?> class=img-responsive >
+                    <a href=single-image.php?id=<?php echo $row['ImageID']; ?> class=img-responsive-small >
                      <img src=images/square-medium/<?php echo $row['Path']; ?> alt= <?php echo $row['Title']; ?> >
                           <div class="caption">
                             <div class="blur"></div>
@@ -122,5 +128,5 @@
         <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
- <script type="text/javascript" src="js/image-filter.js"></script>>
+ <script type="text/javascript" src="js/image-filter.js"></script>
 </html>

@@ -23,7 +23,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Single Country</title>
+    <title>Countries</title>
 
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <?php include 'includes/css-list.php'; ?>
@@ -55,61 +55,28 @@
                             <p>Population: <b><?php echo number_format($row['Population']) ?></b></p>
                             <p>Currency Name: <b><?php echo $row['CurrencyName'] ?></b></p>
                             <p><?php echo $row['CountryDescription'] ?></p>
-                            
-                            <div id="map"></div>
-                            
-                                <script>
-                                  function initMap() {
-                                      <?php
-                                        $id = $_GET['id'];
-                                        $db = new ImagesGateway($connection);
-                                        $result = $db->findById2($id, "CountryCodeISO"); 
-                                        ?>
-                                        
-                                    
-                                    var bounds = new google.maps.LatLngBounds();
 
-                                    var initPoint = {lat: <?php echo $result[0]["Latitude"]?>, lng: <?php echo $result[0]["Longitude"]?> };
-                                    var initPoint2 = {lat: <?php echo $result[8]["Latitude"]?>, lng: <?php echo $result[8]["Longitude"]?> };
-                                    var map = new google.maps.Map(document.getElementById('map'), {
-                                        center: initPoint,
-                                        zoom: 3,
+                                      <?php
+                                        $id2 = $_GET['id'];
+                                        $db2 = new ImagesGateway($connection);
+                                        $result2 = $db2->findById2($id2, "CountryCodeISO"); 
                                         
-                                    });
-                                    bounds.extend(initPoint);
-                                    bounds.extend(initPoint2);
-                                    var marker = new google.maps.Marker({
-                                     position: initPoint,
-                                     map: map
-                                     });
-                                     var marker = new google.maps.Marker({
-                                     position: initPoint2,
-                                     map: map
-                                     });
-                                     
-                                     for( i = 0; i < <?php count($result)?>; i++ ) {
+                                        $markers = '';
                                         
-                                        var index = i;
-                                        <?php $index = "<script>document.write(index)</script>"?>
+                                        foreach ($result2 as $row2) {
+                                            $markers = $markers . $row2['Latitude'] . "," . $row2['Longitude'] . "|";
+                                        }
                                         
-                                        <?php echo $index;?>
-                                        var uluru = {lat: <?php $result[$index]["Latitude"]?>, lng: <?php $result[$index]["Longitude"]?> };
-                                            bounds.extend(uluru);
-                                            marker = new google.maps.Marker({
-                                                position: uluru,
-                                                map: map,
-                                            });
-                                    
+                                        $co = $row['CountryName'];
                                         
-                                    map.fitBounds(bounds);
- 
-                                  };
-                                  
-                                </script>
-                                <script async defer
-                                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp5osxw8q_Yscu2o6OV48ZcBR3yr4-NAM&callback=initMap">
-                                </script>
-                        
+                                        //$co = str_replace('1', '', $co);
+                                        
+                                        
+                                        
+                                        echo "<img class='img-responsive' src='https://maps.googleapis.com/maps/api/staticmap?center={$co}&size=640x400&maptype=roadmap
+                                        &markers=color:red%7C{$markers}&key=AIzaSyBnv-h0YuKzwpaPoCoMiM64xb__MfPRWo4'>";
+                                        ?>
+         
                     </div>
                     
                     
@@ -125,10 +92,13 @@
                         $db = new ImagesGateway($connection);
                         $result = $db->findById2($id, "CountryCodeISO");
                         foreach ($result as $row) {
-                          $img = "images/square-small/" . $row['Path'];
-                            generateLink("single-image.php", $row['ImageID'], "list-group-item", $row['Title']);
-                            echo "<div id='pop' style=' display:none; position:fixed;'><img src='$img'  /></div>";
-                            //generateLinkwImg("single-image.php?imgId=$imgId", "col-md-1", "", $img, $row['Description'], "");
+                            $id = $row['ImageID'];
+                          $img = "images/square-medium/" . $row['Path'];
+                                $img2 = "images/square-small/" . $row['Path'];
+                                
+                                generateLinkwImg("single-image.php?id=$id", "", "", $img2, $row['Title'], "image-item img-responsive img-responsive-list");
+                                //along with the title of the image 
+                                echo "<div style=' display:none; position:fixed;' class='panel panel-info'><div class='panel-heading'>".$row['Title']."</div><div class='panel-item''><img src='$img'  /></div></div>";
                          }
                         
                         ?>

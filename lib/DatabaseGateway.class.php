@@ -103,10 +103,30 @@ abstract class DatabaseGateway {
    $statement = DatabaseHelper::runQuery($this->connection, $sql, null);
    return $statement->fetchAll();
    //return $sql;
+   }
    
-
-}
-
+   
+   
+   //login functions
+    public function getUserName2($id,$key){
+    $sql = $this->getSelectStatement() . ' WHERE ' . $key . '=' . '"' . $id . '"';
+    $statement = DatabaseHelper::runQuery($this->connection, $sql,null);
+    return $statement->fetch();   
+    }
+    
+    public function getPassword($username){    
+    return "SELECT Password FROM UsersLogin WHERE UserName = $username ";
+    }
+    
+    public function getSalt($username){    
+    return "SELECT Salt FROM UsersLogin WHERE UserName = $username ";
+    }
+    
+    public function compair(){    
+    return false;
+    }
+   
+   
 }
 
 ?>
