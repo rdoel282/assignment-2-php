@@ -7,6 +7,7 @@
         exit();
     }
     unset($_SESSION['id']);
+    unset($_SESSIONfav['favorites']);
     header("Location: index.php");
     
 ?>

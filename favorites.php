@@ -55,7 +55,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="panel panel-info">
-                    <div class="panel-heading">My Favorite Images></div>
+                    <div class="panel-heading">My Favorite Images</div>
                         <div id="image-list" class="panel-body">
                         <?php  
                             $id = $_GET['id'];

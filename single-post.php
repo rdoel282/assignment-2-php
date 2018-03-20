@@ -83,12 +83,17 @@
                                                 $('#favAlert').hide('fade');
                                             }, 2000);
                                         });
+                                        <?php 
+                                        $_SESSIONfav['favorites'][] = $row['PostID'];
+                                        array_push($_SESSIONfav['favorites'], "hello");
+                                    ?>
                                     });
-                                    $_SESSION['favorites'][] = $row['PostID'];
-                                    array_push($_SESSIONfav['favorites'], "hello");
+                                    
+                                    
                                     
                                     
                                 </script>
+                                
                                          <?php echo print_r($_SESSIONfav['favorites']); ?>   
                                           </div>  <!-- /.row -->
                                            <hr/>
